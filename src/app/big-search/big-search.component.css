@@ -1,0 +1,21 @@
+.container-fluid{
+  background-color: #2962ff;
+}
+.container{
+  height: 15vh;
+}
+
+
+.ng-autocomplete{
+  background-color: blueviolet !important;
+}
+.col-md-8{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .navbar-col{
+  position: relative;
+  display: flex;
+  align-items: center;
+} */

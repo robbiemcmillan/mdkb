@@ -1,0 +1,12 @@
+<div class="container">
+
+<h3>Popular Entries</h3>
+<ul>
+  <li *ngFor="let popularEntry of popularEntries">
+    <a (click)="switchTo(popularEntry.name)">
+       {{popularEntry.name}}</a>
+  </li>
+</ul>
+</div>
+
+

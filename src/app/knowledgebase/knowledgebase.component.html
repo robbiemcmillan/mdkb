@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+<app-navbar
+  (sortByAlphabet)="sortByAlphabet()"
+  (sortByDt)="sortByDt()"
+  (filterEntries)="filterEntries($event)"
+  [setCategory]="this.category"
+
+>
+<!-- [setEntry]="this.popular" -->
+
+</app-navbar>
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <div *ngIf="popular === true && searchBar === false">
+        <div class="col-md-12">
+          <h1>"Test"</h1>
+          <hr />
+          <app-entry [entryID]="this.popEntry"></app-entry>
+        </div>
+      </div>
+      <div *ngIf="searchBar === true && popular === false">
+        <div class="col-md-12">
+          <h1>"searchBar"</h1>
+          <hr />
+          <app-entry [entryID]="this.searchEntry"></app-entry>
+        </div>
+      </div>
+      <div *ngIf="searchBar === false && popular === false">
+        <div class="col-md-12">
+          <h1>{{ category }}</h1>
+          <hr />
+          <app-entry-display
+            *ngFor="let entry of entries"
+            [entry]="entry"
+          ></app-entry-display>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <app-popular></app-popular>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <app-faves></app-faves>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

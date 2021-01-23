@@ -1,0 +1,11 @@
+.container-fluid{
+  background-color: #2962ff;
+}
+
+
+.navbar-col{
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
