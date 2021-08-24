@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 
 @Injectable()
 export class PopularService {
@@ -16,47 +16,35 @@ export class PopularService {
   private checkCategory = new BehaviorSubject<string>("");
   currentCategory = this.checkCategory.asObservable();
 
-
   private checkSearchBar = new BehaviorSubject<boolean>(false);
   currentSearchBar = this.checkSearchBar.asObservable();
 
   private checkSearchBarEntry =  new BehaviorSubject<string>("");
   currentSearchBarEntry = this.checkSearchBarEntry.asObservable();
 
-
-
   entries: any[] = [];
-
   entry:any;
-
   popular: boolean;
-
   clickedEntry: string;
-
   searchBarEntry: string;
-
   searchBarBool: boolean;
 
-  constructor() {
-
-    this.reset();
-
-   }
+  constructor() { }
 
 
    setSearchBar(value,value2){
      this.searchBarEntry = value;
      this.searchBarBool = value2;
-
      this.checkSearchBar.next(value2);
      this.checkSearchBarEntry.next(value);
-
-    //  alert(this.searchBarEntry);
-    //  alert(this.searchBarBool);
    }
 
-
-
+   setPopular(value,value2){
+    this.popular = value;
+    this.clickedEntry = value2;
+    this.checkPopClick.next(value2);
+    this.checkEntry.next(value);
+   }
 
 
   addEntry(newEntry){

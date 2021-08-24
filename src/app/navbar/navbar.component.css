@@ -3,6 +3,10 @@
   background-color: #f4f5f5;
 }
 
+.ng-autocomplete {
+  width: 10vw;
+  box-shadow: none !important;
+}
 
 
 

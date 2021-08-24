@@ -1,79 +1,61 @@
-import { Component,  Input, OnInit, AfterContentInit, Output} from '@angular/core';
-import { PopularService } from "../popular.service";
-import { EventEmitter } from '@angular/core';
-
+import { Component,  Input, OnInit} from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-entry-display',
   templateUrl: './entry-display.component.html',
-  styleUrls: ['./entry-display.component.css']
+  styleUrls: ['./entry-display.component.css'],
+    animations: [
+      trigger('smoothCollapse', [
+        state('initial', style({
+          height: '0',
+          overflow: 'hidden',
+          opacity: '0',
+          visibility: 'hidden'
+        })),
+        state('final', style({
+          overflow: 'hidden'
+        })),
+        transition('initial <=> final', animate('500ms'))
+      ]),
+      trigger('rotatedState', [
+        state('default', style({ transform: 'rotate(0)'})),
+        state('rotated', style({ transform: 'rotate(90deg)'})),
+        transition('default <=> rotated', animate('250ms'))
+      ])
+    ]
 })
-export class EntryDisplayComponent implements AfterContentInit, OnInit {
+
+export class EntryDisplayComponent implements OnInit {
+
   @Input () entry:any;
-  loaded=false;
-  counter: number=0;
+  showBody = false;
 
+  title: string;
+  author: string;
+  date: string;
+  status: boolean;
 
+  constructor() {}
 
-
-
-  constructor(private data: PopularService) {}
   ngOnInit(): void {
-    console.log(this.category());
-
-  }
-  ngAfterContentInit(): void {
-    this.hasMarkdownLoaded(this.loaded);
+    this.title = this.entry.title;
+    this.date = this.entry.date;
+    this.author = this.entry.author;
   }
 
-  title(){
-    return this.entry.e_title.split('-')[0];
+  toggleDropdown(){
+    this.showBody = !this.showBody;
   }
 
-  category(){
-    return this.entry.e_title.split('-')[1];
-  }
-
-  created(){
-    var day;
-    var month;
-    var year;
-
-    day = this.entry.e_created.substr(8,9);
-    month = this.entry.e_created.substr(5);
-    month = month.substr(0,month.length-3);
-    year = this.entry.e_created.substr(0,4);
 
 
-  return day + "/" + month + "/" + year;
-
-   }
-
-   hasMarkdownLoaded(loaded){
-    this.loaded=loaded;
-   }
-
-  status: boolean = false;
-  clickEvent(){
-      this.status = !this.status;
-  }
-
-  reset(){
-    this.data.reset();
-  }
-
-  private entryPopularity = {};
-  public sendEntry(){
-    this.counter++;
-
-    this.entryPopularity = { counter:this.counter, name:this.entry.e_title }
-    this.data.addEntry(this.entryPopularity);
 
   }
 
-  message:string;
-  clickCounter(){
-    this.sendEntry();
-  }
 
-}
+
+
+
+
+

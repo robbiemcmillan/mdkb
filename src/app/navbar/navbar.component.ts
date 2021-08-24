@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
-import { PopularService } from "../popular.service";
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Input} from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -9,81 +8,32 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input () setCategory: string
-  @Output('sortByAlphabet') sortByAlphabet: EventEmitter<any> = new EventEmitter();
-  @Output('sortByDt') sortByDt: EventEmitter<any> = new EventEmitter();
-  @Output('filterEntries') filterEntries: EventEmitter<any> = new EventEmitter();
-  isNavbarCollasped=true;
+  @Input () category: string;
+  @Input () byCategory: boolean;
+  @Input () title: string;
+  currentCategory;
 
 
-  setEntry: string;
-  setPopCategory: string;
-  navView: boolean;
-  sub:Subscription;
-  sub2:Subscription;
-  sub3:Subscription;
-  sub4:Subscription;
-  sub5:Subscription
 
-  constructor(private data: PopularService) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.sub = this.data.currentClickPop.subscribe((bool) => {
-      this.navView = bool;
-    });
+  ngOnInit() {
 
-    this.sub2 = this.data.currentEntry.subscribe((str) => {
-      this.setEntry = str;
-    });
-
-    this.sub3 = this.data.currentCategory.subscribe((str) =>{
-      this.setPopCategory = str.split('.')[0];
-    });
-
-    this.sub4 = this.data.currentSearchBar.subscribe((bool) => {
-      this.navView = bool;
-
-    });
-
-    this.sub5 = this.data.currentSearchBarEntry.subscribe((str) => {
-      this.setPopCategory = str.split('-')[1];
-
-
-    });
-
+    this.currentCategory = this.category;
 
   }
 
-  orderByAlphabet(){
-    this.sortByAlphabet.emit();
-  }
+  redirectTo(uri:string,state){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri], state));
+ }
 
-  orderByDt(){
-    this.sortByDt.emit();
-  }
-
-  searchEntries(event:any){
-    this.filterEntries.emit(event.target.value);
-  }
-
-  reset(){
-    alert("hello");
-    this.data.reset();
-
-
-  }
-
-  // resetSearch(){
-  //   alert("hello resetSearch")
-  //   this.data.resetSearch();
-  // }
+ returnTo(){
+  this.redirectTo('/knowledgebase', { state: { category: this.category } });
+ }
 
 
 
-  setNewCategory(value){
-    this.data.setCurrentCategory(value);
-
-  }
 
 
 

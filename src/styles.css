@@ -1,23 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap');
-
-h1,h2,h3,h4,h5,h6{
-  font-family: 'Raleway', sans-serif;
-
-}
-
-
-body,html{
-  background-color: #ffffff;
-  height: 100vh;
-  font-family: 'Open Sans', sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap");
 
 ::-webkit-scrollbar {
   display: none;
-  }
+}
 
+html {
+  position: relative;
+  min-height: 100%;
+}
 
-
-
-
-
+body {
+  margin: 0 0 100px;
+  font-family: "Libre Franklin", sans-serif;
+}

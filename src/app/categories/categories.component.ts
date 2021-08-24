@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
 import { PopularService } from '../popular.service';
+import categories from '../../assets/categories.json';
 
 @Component({
   selector: 'app-categories',
@@ -9,13 +9,13 @@ import { PopularService } from '../popular.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private router: Router, private renderer: Renderer2, private data: PopularService) { }
+  categories: any[] = [];
 
-  ngOnInit(): void {}
+  constructor() { }
 
-  reset(){
-    this.data.resetCat();
+  ngOnInit() {
+    /* assign categories json string to array */
+    this.categories = categories;
   }
-
 
 }

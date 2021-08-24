@@ -1,18 +1,42 @@
-<ngb-accordion #a="ngbAccordion">
+<ngb-accordion #a="ngbAccordion" [destroyOnHide]="false">
   <ngb-panel id="custom-panel-1">
     <ng-template ngbPanelHeader >
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="m-0">{{ title() }}</h1>
-        <button ngbPanelToggle class="btn p-0" (click)="sendEntry();clickEvent()" [ngClass]="status ? 'style1' : 'style2'" >
-          <i class="fas fa-angle-right"></i>
-        </button>
+           <div class="col-md-9">
+            <h2 class="">{{ title }}</h2>
+            <em><span class="">author: {{ author }}</span>
+            <span class="ml-1 mr-1">|</span>
+            <span class="">posted: {{ date }}</span></em>
+           </div>
+
+           <button ngbPanelToggle class="btn p-0 float-right " (click) = "toggleDropdown()" [@rotatedState]="!showBody? 'default': 'rotated'">
+            <i class="fas fa-angle-right"></i>
+          </button>
+
+
+
+
       </div>
+
+
+
+
+
+
+
     </ng-template>
-    <ng-template ngbPanelContent>
-      <app-entry (loaded)="hasMarkdownLoaded($event)" [entryID]="entry.e_title"></app-entry>
+
+    <ng-template ngbPanelContent >
+      <div [@smoothCollapse]="!showBody? 'initial': 'final'">
+      <app-entry [entryID]="entry.file"></app-entry>
+    </div>
     </ng-template>
+
   </ngb-panel>
 </ngb-accordion>
+
+
+
 
 
 

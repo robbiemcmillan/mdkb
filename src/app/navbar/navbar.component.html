@@ -1,48 +1,23 @@
 <div class="container-fluid">
   <div class="container">
-    <nav class="navbar navbar-expand-lg">
-      <div *ngIf="!navView else entryNavbar">
-      <a class="mr-1 ml-1"  [routerLink]="['/']" >Home</a>
-      <a class="ml-1 mr-1">{{ setCategory }}</a>
-    </div>
-      <ng-template #entryNavbar>
-        hello
-      <a class="mr-1 ml-1" [routerLink]="['/']">Home</a>
-      <a (click)="reset()" class="ml-1 mr-1">{{ setPopCategory }} </a>
-      <a class="ml-1 mr-1">{{ setEntry }}</a>
-     </ng-template>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-        (click)="isNavbarCollasped = !isNavbarCollasped">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div [ngbCollapse]="isNavbarCollasped" class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <div ngbDropdown display="dynamic">
-              <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Filter By</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="orderByAlphabet()">
-                  Alphabet
-                </button>
-                <button ngbDropdownItem (click)="orderByDt()">
-                  Create Date - Descending
-                </button>
-                <button ngbDropdownItem>
-                  Create Date - Ascending
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <form>
-        <div class="input-group">
-          <input class="form-control rounded-pill" type="search" placeholder="Search the knowledgebase..."
-            aria-label="Search" name="search" (input)="searchEntries($event)">
+    <nav class="navbar">
+      <div class="mr-auto">
+        <div *ngIf="byCategory; else bySearchBar">
+          <span><a [routerLink]="['/home']"> home </a></span>
+          <span class="mr-1">/</span>
+          <span>{{ category }}</span>
         </div>
-      </form>
+        <ng-template #bySearchBar>
+          <span><a [routerLink]="['/home']"> home </a></span>
+          <span class="mr-1">/</span>
+          <span><a (click)="returnTo()">{{ category }}</a></span>
+          <span class="ml-1 mr-1">/</span>
+          <span>{{ title }}</span>
+        </ng-template>
+      </div>
+      <div class="ml-auto">
+        <app-search-bar></app-search-bar>
+      </div>
     </nav>
   </div>
-  </div>
-
+</div>

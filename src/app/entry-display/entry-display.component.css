@@ -1,18 +1,21 @@
 
-/deep/.card {
+::ng-deep.card {
   border: none;
   margin-bottom: 1rem;
   background-color:  #f4f5f5;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%)
 }
 
 
 .style1 {
+  transition: 0.70s;
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
 }
 
 .style2{
+  transition: 0.70s;
   -ms-transform: rotate(0deg); /* IE 9 */
   -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
   transform: rotate(0deg);
@@ -22,8 +25,6 @@
 .btn{
   font-size: 2rem;
   color: #2962ff;
-
-
 }
 
 
@@ -32,3 +33,4 @@
   box-shadow: none;
 
 }
+

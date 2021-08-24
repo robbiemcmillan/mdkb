@@ -1,64 +1,28 @@
 <div class="container">
   <h1>Categories</h1>
-  <hr>
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <a  [routerLink]="['kb']" [state]="{ data: 'Category 1'}" (click)="reset()">
-        <h4>Category 1</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
-    </div>
-    <div class="col-md-6">
-      <a [routerLink]="['kb']" [state]="{ data: 'Category 2'}" (click)="reset()">
-        <h4>Category 2</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <a [routerLink]="['kb']" [state]="{ data: 'Category 3'}" (click)="reset()">
-        <h4>Category 3</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
-    </div>
-    <div class="col-md-6">
-      <a [routerLink]="['kb']" [state]="{ data: 'Category 4'}" (click)="reset()">
-        <h4>Category 4</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <a [routerLink]="['kb']" [state]="{ data: 'Category 5'}" (click)="reset()">
-        <h4>Category 5</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
-    </div>
-    <div class="col-md-6">
-      <a [routerLink]="['kb']" [state]="{ data: 'Category 6'}" (click)="reset()">
-        <h4>Category 6</h4>
-        <p>"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </a>
+  <hr/>
+  <div *ngFor="let category of categories; let i = index; let even = even">
+    <div class="row mb-3" *ngIf="even">
+      <div class="col-md-6 mb-3">
+        <div class="col-md-12">
+          <a [routerLink]="['/knowledgebase']" [state]="{category: categories[i].category}">
+          <h4>{{ categories[i].category }}</h4>
+          <p>
+            {{ categories[i].description }}
+          </p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="col-md-12">
+          <a [routerLink]="['/knowledgebase']" [state]="{category: categories[i+1].category}">
+          <h4>{{ categories[i+1].category }}</h4>
+          <p>
+            {{ categories[i+1].description }}
+          </p>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

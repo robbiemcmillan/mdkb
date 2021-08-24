@@ -4,14 +4,11 @@
 .container{
   height: 15vh;
 }
-
-
-.ng-autocomplete{
-  background-color: blueviolet !important;
-}
 .col-md-8{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
 
