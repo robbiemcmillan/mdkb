@@ -1,25 +1,23 @@
 <div class="container">
-  <h1>Categories</h1>
+  <h1>My Favourite Recipes</h1>
   <hr/>
   <div *ngFor="let category of categories; let i = index; let even = even">
     <div class="row mb-3" *ngIf="even">
       <div class="col-md-6 mb-3">
+        <h2>{{ categories[i].category }}</h2>
         <div class="col-md-12">
           <a [routerLink]="['/knowledgebase']" [state]="{category: categories[i].category}">
-          <h4>{{ categories[i].category }}</h4>
-          <p>
-            {{ categories[i].description }}
-          </p>
+            <img class="img-fluid" src= '{{ categories[i].image }}'>
+            <p class="mt-2">{{ categories[i].description }}</p>
           </a>
         </div>
       </div>
       <div class="col-md-6 mb-3">
+        <h2>{{ categories[i+1].category }}</h2>
         <div class="col-md-12">
           <a [routerLink]="['/knowledgebase']" [state]="{category: categories[i+1].category}">
-          <h4>{{ categories[i+1].category }}</h4>
-          <p>
-            {{ categories[i+1].description }}
-          </p>
+            <img class="img-fluid" src= '{{ categories[i+1].image }}'>
+            <p class="mt-2"> {{ categories[i+1].description }} </p>
           </a>
         </div>
       </div>

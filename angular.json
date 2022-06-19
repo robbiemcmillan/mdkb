@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "knowledgebase": {
+    "mdkb": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/knowledgebase",
+            "outputPath": "dist/mdkb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "knowledgebase:build"
+            "browserTarget": "mdkb:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "knowledgebase:build:production"
+              "browserTarget": "mdkb:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "knowledgebase:build"
+            "browserTarget": "mdkb:build"
           }
         },
         "test": {
@@ -118,16 +118,20 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "knowledgebase:serve"
+            "devServerTarget": "mdkb:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "knowledgebase:serve:production"
+              "devServerTarget": "mdkb:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "knowledgebase"
+  "defaultProject": "mdkb"
 }

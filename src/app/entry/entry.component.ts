@@ -7,9 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './entry.component.html',
   styleUrls: ['./entry.component.css']
 })
+
 export class EntryComponent implements OnInit, OnDestroy{
 
-  @Input () entryID;
+  @Input () entryID: string;
   private sub: Subscription;
   entry: String;
 
@@ -18,11 +19,11 @@ export class EntryComponent implements OnInit, OnDestroy{
   ngOnInit() {
     if (!this.entryID){
       this.sub = this.route.params.subscribe(params => {
-        this.entry = 'assets/knowledgebase/entriesTest/' + params['id'];
+        this.entry = 'assets/knowledgebase/entries/' + params['id'];
       });
     }
     else{
-      this.entry = 'assets/knowledgebase/entriesTest/' + this.entryID;
+      this.entry = 'assets/knowledgebase/entries/' + this.entryID;
     }
   }
 

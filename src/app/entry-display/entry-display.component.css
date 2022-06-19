@@ -27,10 +27,8 @@
   color: #2962ff;
 }
 
-
 .btn:focus {
   outline: none;
   box-shadow: none;
-
 }
 

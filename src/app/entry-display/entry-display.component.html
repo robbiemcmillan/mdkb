@@ -8,30 +8,16 @@
             <span class="ml-1 mr-1">|</span>
             <span class="">posted: {{ date }}</span></em>
            </div>
-
            <button ngbPanelToggle class="btn p-0 float-right " (click) = "toggleDropdown()" [@rotatedState]="!showBody? 'default': 'rotated'">
             <i class="fas fa-angle-right"></i>
           </button>
-
-
-
-
       </div>
-
-
-
-
-
-
-
     </ng-template>
-
     <ng-template ngbPanelContent >
       <div [@smoothCollapse]="!showBody? 'initial': 'final'">
       <app-entry [entryID]="entry.file"></app-entry>
     </div>
     </ng-template>
-
   </ngb-panel>
 </ngb-accordion>
 

@@ -47,11 +47,7 @@ export class EntryDisplayComponent implements OnInit {
   toggleDropdown(){
     this.showBody = !this.showBody;
   }
-
-
-
-
-  }
+}
 
 
 

@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { PopularService } from '../popular.service';
 import categories from '../../assets/categories.json';
 
 @Component({
